@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
-import DatePicker from 'react-native-datepicker';
+import { View, Text, TextInput, StyleSheet, Pressable, Image, Modal, ScrollView } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function CrearCitas() {
   const [duiPaciente, setDuiPaciente] = useState('');
   const [fechaCita, setFechaCita] = useState('');
   const [horaCita, setHoraCita] = useState('');
   const [detallesCita, setDetallesCita] = useState('');
+  const [dtpVisible, setDtpVisible] = useState(false)
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Crear cita</Text>
       <TextInput
         style={styles.input}
@@ -18,16 +19,17 @@ export default function CrearCitas() {
         onChangeText={(text) => setDuiPaciente(text)}
       />
       <Text style={styles.label}>Fecha de cita</Text>
-      <DatePicker
-        style={styles.datePicker}
-        date={fechaCita}
-        mode="date"
-        placeholder="Selecciona fecha"
-        format="YYYY-MM-DD"
-        confirmBtnText="Confirmar"
-        cancelBtnText="Cancelar"
-        onDateChange={(date) => setFechaCita(date)}
-      />
+
+      <Pressable onPress={()=>{setDtpVisible(true)}}>
+            <Image style={styles.calendarImg} source={{uri:"https://static.vecteezy.com/system/resources/previews/014/586/732/original/calendar-icon-a-red-calendar-for-reminders-of-appointments-and-important-festivals-in-the-year-png.png"}} />
+      </Pressable>
+
+       <Modal onRequestClose={()=>{setDtpVisible(false)}} visible={dtpVisible}>
+        <View style={styles.modalDTP}>
+            <DateTimePicker onChange={()=>{setDtpVisible(false)}} value={new Date()}/>
+        </View>
+       </Modal>
+
       <Text style={styles.label}>Hora de la cita</Text>
       <TextInput
         style={styles.input}
@@ -44,7 +46,7 @@ export default function CrearCitas() {
         multiline
         numberOfLines={4}
       />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -86,4 +88,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     textAlignVertical: 'top',
   },
+  calendarImg: {
+    width: 60,
+    height: 60,
+  },
+  modalDTP:{
+    flex: 1,
+    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Fondo rojo con 50% de transparencia
+  }
 });
