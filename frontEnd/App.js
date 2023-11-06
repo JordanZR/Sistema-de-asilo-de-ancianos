@@ -1,109 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image, Pressable } from 'react-native';
-import * as Font from 'expo-font';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LogIn from './screens/Login.js'; // Vista de inicio de sesión
+import MenuDirector from './screens/MenuDirector.js'; // Vista del menuDirector
+import MenuDoctor from './screens/MenuDoctor.js'; // vista del MenuDoctor
+import CrearCitas from './screens/crearCitas.js';
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  const [usuario, setUsuario] = useState('');
-  const [contrasena, setContrasena] = useState('');
-  const [fontLoaded, setFontLoaded] = useState(false);
-  const googleIco = require("./assets/google.png");
-
-  useEffect(() => {
-    // Carga la fuente de forma asíncrona
-    (async () => {
-      await Font.loadAsync({
-        'roboto-regular': require('./assets/Roboto-Regular.ttf'), // Asegúrate de que la ruta sea correcta
-      });
-      setFontLoaded(true);
-    })();
-  }, []);
-
-  const handleLogin = () => {
-    // Implementa la lógica de inicio de sesión aquí
-    console.log('Iniciando sesión con usuario:', usuario);
-  };
-
-  const handleRegistro = () => {
-    // Implementa la lógica de registro aquí
-    console.log('Registrando nuevo usuario:', usuario);
-  };
-
-  const handleGoogleLogin = () => {
-    // Implementa la lógica de inicio de sesión con Google aquí
-    console.log('Iniciando sesión con Google');
-  };
-
-  if (!fontLoaded) {
-    return null; // Espera hasta que la fuente se cargue
-  }
-
   return (
-    <View style={styles.container}>
-      <Image
-        source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/c/cc/Universidad_don_bosco.jpg' }}
-        style={styles.logo}
-      />
-      <Text style={styles.label}>Usuario:</Text>
-      <TextInput
-        style={styles.input}
-        value={usuario}
-        onChangeText={setUsuario}
-        placeholder="Usuario"
-      />
-      <Text style={styles.label}>Contraseña:</Text>
-      <TextInput
-        style={styles.input}
-        value={contrasena}
-        onChangeText={setContrasena}
-        secureTextEntry={true}
-        placeholder="Contraseña"
-      />
-      <View style={styles.buttonContainer}>
-        <Button title="Log In" onPress={handleLogin} />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button title="Registrarme" onPress={handleRegistro} />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Pressable onPress={handleGoogleLogin}>
-          <Image source={googleIco} style={styles.googleImg}/>
-        </Pressable>
-      </View>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LogIn} />
+        <Stack.Screen name="MenuDirector" component={MenuDirector} />
+        <Stack.Screen name="MenuDoctor" component={MenuDoctor} />
+        <Stack.Screen name="CrearCitas" component={CrearCitas} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 5,
-    fontFamily: 'roboto-regular',
-  },
-  input: {
-    width: '100%',
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingLeft: 10,
-    fontFamily: 'roboto-regular',
-  },
-  logo: {
-    width: 150,
-    height: 150,
-    marginBottom: 20,
-  },
-  buttonContainer: {
-    marginVertical: 10,
-  },
-  googleImg: {
-    width: 40, // Tamaño deseado para el icono de Google
-    height: 40,
-  }
-});
