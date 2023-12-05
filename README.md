@@ -1,4 +1,4 @@
-# reactNativeApp
+# Sistema de asilo de ancianos
 
 Integrantes: Jordan Ismael Zelaya Ramirez - ZR170168
 
