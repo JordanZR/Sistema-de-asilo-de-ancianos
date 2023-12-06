@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "frontEnd",
-    "slug": "frontEnd",
+    "slug": "sistema-de-asilo-de-ancianos",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jordan.zelaya99.sistemadeasilodeancianos"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "83d8117d-a034-4773-b635-5d80083feb68"
+      }
+    },
+    "owner": "jordan.zelaya99"
   }
 }
