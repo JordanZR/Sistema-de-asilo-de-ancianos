@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, Pressable } from 'react-native';
 import * as Font from 'expo-font';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 export default function LogIn({navigation}) {
   const [usuario, setUsuario] = useState('');
@@ -17,6 +19,10 @@ export default function LogIn({navigation}) {
       setFontLoaded(true);
     })();
   }, []);
+
+  GoogleSignin.configure({
+    webClientId: '552408924638-b62004v038ntf2g8t1leesit6l72v805.apps.googleusercontent.com',
+  });
 
   const handleLogin = () => {
     // Implementa la lógica de inicio de sesión aquí

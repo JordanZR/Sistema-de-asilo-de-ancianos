@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "552408924638",
+    "project_id": "asilo-2d683",
+    "storage_bucket": "asilo-2d683.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552408924638:android:349f15005f0134211b1d4f",
+        "android_client_info": {
+          "package_name": "com.jordan.zelaya99.sistemadeasilodeancianos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552408924638-2lqu5e6psv82gq1qeqi86mouv2jh4bfs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jordan.zelaya99.sistemadeasilodeancianos",
+            "certificate_hash": "03811fefe7ef657fb7fc7f92f16a41c16571a4b4"
+          }
+        },
+        {
+          "client_id": "552408924638-s0hsbbuuq1tfo5k17ems2pfps62rh5l6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jordan.zelaya99.sistemadeasilodeancianos",
+            "certificate_hash": "09a6f91073cd38814acfd3bfc99f0a4c6ca159f8"
+          }
+        },
+        {
+          "client_id": "552408924638-b62004v038ntf2g8t1leesit6l72v805.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC88gfZLISsb4-rKt6N_Sz9En53hZH8o3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552408924638-b62004v038ntf2g8t1leesit6l72v805.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
