@@ -36,10 +36,20 @@ export default function LogIn({navigation}) {
     console.log('Registrando nuevo usuario:', usuario);
   };
 
-  const handleGoogleLogin = () => {
-    // Implementa la lógica de inicio de sesión con Google aquí
-    console.log('Iniciando sesión con Google');
-  };
+  async function onGoogleButtonPress() {
+    // Check if your device supports Google Play
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+  
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
+  }
+
+
 
   if (!fontLoaded) {
     return null; // Espera hasta que la fuente se cargue
@@ -73,7 +83,7 @@ export default function LogIn({navigation}) {
         <Button title="Registrarme" onPress={handleRegistro} />
       </View>
       <View style={styles.buttonContainer}>
-        <Pressable onPress={handleGoogleLogin}>
+        <Pressable onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
           <Image source={googleIco} style={styles.googleImg}/>
         </Pressable>
       </View>
