@@ -20,4 +20,5 @@ app.listen(app.get('port'), () => {
 })
 
 module.exports = app
-require('./DB')
+
+require('./routes/usuarioRoute')
