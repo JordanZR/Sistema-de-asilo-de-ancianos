@@ -6,7 +6,7 @@ CREATE TABLE Usuarios (
     Rol VARCHAR(20), -- Puede ser 'Director', 'Doctor' o 'Paciente'
     PrimerNombre VARCHAR(50),
     PrimerApellido VARCHAR(50),
-    FechaNacimiento DATE,
+    FechaNacimiento VARCHAR(20),
     Usuario VARCHAR(50),
     Contraseña VARCHAR(50),
     JVPM VARCHAR(20)
@@ -21,3 +21,4 @@ CREATE TABLE Citas (
     Detalles TEXT,
     FOREIGN KEY (PacienteID) REFERENCES Usuarios (DUI)
 );
+
