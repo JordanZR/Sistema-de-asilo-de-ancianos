@@ -14,7 +14,7 @@ CREATE TABLE Usuarios (
 
 -- Creación de la tabla Citas
 CREATE TABLE Citas (
-    CitaID INT PRIMARY KEY,
+    CitaID INT AUTO_INCREMENT PRIMARY KEY,
     PacienteID VARCHAR(10), -- Clave foránea del DUI en la tabla Usuarios
     JVPMCita VARCHAR(20),   -- Clave foránea del JVPM en la tabla Usuarios
     FechaCita DATE,
