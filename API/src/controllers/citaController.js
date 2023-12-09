@@ -11,8 +11,7 @@ citaController.getCitas = (req, res)=>{
     })
 }
 
-
-citaController.getCitaDoctor = (req, res)=>{
+citaController.getCitasDoctor = (req, res)=>{
     query = "SELECT * from Citas WHERE JVPMCita = '" + req.params.jvpmcita + "'"
     connection.query(query, function (err, result) {
         if (err) console.log(err)
@@ -20,7 +19,7 @@ citaController.getCitaDoctor = (req, res)=>{
     })
 }
 
-citaController.getCitaPaciente = (req, res)=>{
+citaController.getCitasPaciente = (req, res)=>{
     query = "SELECT * from Citas WHERE PacienteID = '" + req.params.pacienteid + "'"
     connection.query(query, function (err, result) {
         if (err) console.log(err)

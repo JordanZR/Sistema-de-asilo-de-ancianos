@@ -22,3 +22,4 @@ app.listen(app.get('port'), () => {
 module.exports = app
 
 require('./routes/usuarioRoute')
+require('./routes/citaRoute')
