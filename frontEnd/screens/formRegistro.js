@@ -13,7 +13,9 @@ const RegistroFormulario = () => {
     const [fechaNacimiento, setFechaNacimiento] = useState('');
             const handleRegistro = async () => {
                 try {
-                    const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
+                    const response = await axios.get(
+                        "http://localhost:4000/usuario"
+                    );
                     console.log(response.data);
                 } catch (error) {
                     console.error('Error fetching data:', error);
