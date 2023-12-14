@@ -11,21 +11,15 @@ const RegistroFormulario = () => {
     const [correo, setCorreo] = useState('');
     const [contrasena, setContrasena] = useState('');
     const [fechaNacimiento, setFechaNacimiento] = useState('');
-
-    const handleRegistro = () => {
-        useEffect(() => {
-            const fetchData = async () => {
+            const handleRegistro = async () => {
                 try {
-                    const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
-                    setData(response.data);
+                    const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
+                    console.log(response.data);
                 } catch (error) {
                     console.error('Error fetching data:', error);
                 }
             };
 
-            console.log(fetchData());
-        }, []);
-    };
 
     const showDatePicker = async () => {
         try {
