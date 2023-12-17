@@ -3,6 +3,8 @@ import { View, Text, TextInput, Button, StyleSheet, Image, Pressable } from 'rea
 import * as Font from 'expo-font';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
+import axios from 'axios';
+
 
 export default function LogIn({navigation}) {
   const [usuario, setUsuario] = useState('');
@@ -24,14 +26,18 @@ export default function LogIn({navigation}) {
     webClientId: '552408924638-b62004v038ntf2g8t1leesit6l72v805.apps.googleusercontent.com',
   });
 
-  const handleLogin = () => {
-    // Implementa la lógica de inicio de sesión aquí
-    navigation.navigate('MenuDirector');
-    console.log('Iniciando sesión con usuario:', usuario);
-  };
+  const handleLogin = async () => {
+    try {
+        const response = await axios.get(
+            "http://10.0.2.2:4000/usuario/" + usuario + "/" + contrasena
+        );
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+};
 
   const handleRegistro = () => {
-    // Implementa la lógica de registro aquí
     navigation.navigate('RegistroFormulario')
   };
 

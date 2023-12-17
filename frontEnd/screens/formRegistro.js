@@ -1,5 +1,5 @@
 // RegistroFormulario.js
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { View, Text, TextInput, Button, StyleSheet} from 'react-native';
 import axios from 'axios';
 import { DateTimePickerAndroid} from '@react-native-community/datetimepicker';
