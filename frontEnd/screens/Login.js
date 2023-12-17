@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image, Pressable } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Image, Pressable, Alert } from 'react-native';
 import * as Font from 'expo-font';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
@@ -27,14 +27,28 @@ export default function LogIn({navigation}) {
   });
 
   const handleLogin = async () => {
-    try {
+    if(usuario == '' && contrasena == ''){
+      Alert.alert('Error', 'Debe ingresar todos los datos', [{ text: 'OK' }]);
+    }else if(usuario == ''){
+      Alert.alert('Error', 'Por favor ingrese un correo', [{ text: 'OK' }]);
+    }else if(contrasena == ''){
+      Alert.alert('Error', 'Por favor ingrese una contrasena', [{ text: 'OK' }]);
+    }
+    else{
+      try {
         const response = await axios.get(
             "http://10.0.2.2:4000/usuario/" + usuario + "/" + contrasena
         );
-        console.log(response.data);
+        if(response.data[0].Usuario == usuario){
+          Alert.alert('Success', 'Login successful!', [{ text: 'OK' }]);
+        }else{
+          Alert.alert('Error', 'Correo o password invalida', [{ text: 'OK' }]);
+        }
     } catch (error) {
         console.error('Error fetching data:', error);
     }
+    }
+    
 };
 
   const handleRegistro = () => {
