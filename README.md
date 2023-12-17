@@ -1,5 +1,7 @@
 # Sistema de asilo de ancianos
 
+Video explicación: https://youtu.be/rgq3YeZuGo0
+
 Integrantes: Jordan Ismael Zelaya Ramirez - ZR170168
 
 Link a Trello: https://trello.com/b/H1JoSV4j/actividaddps

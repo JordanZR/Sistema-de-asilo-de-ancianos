@@ -32,8 +32,7 @@ export default function LogIn({navigation}) {
 
   const handleRegistro = () => {
     // Implementa la lógica de registro aquí
-    navigation.navigate('MenuDoctor')
-    console.log('Registrando nuevo usuario:', usuario);
+    navigation.navigate('RegistroFormulario')
   };
 
   async function onGoogleButtonPress() {
