@@ -1,40 +1,35 @@
 // RegistroFormulario.js
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, DatePickerAndroid } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet} from 'react-native';
 import axios from 'axios';
-
+import { DateTimePickerAndroid} from '@react-native-community/datetimepicker';
 
 const RegistroFormulario = () => {
     const [dui, setDui] = useState('');
     const [primerNombre, setPrimerNombre] = useState('');
     const [primerApellido, setPrimerApellido] = useState('');
-    const [correo, setCorreo] = useState('');
+    const [usuario, setUsuario] = useState('');
     const [contrasena, setContrasena] = useState('');
     const [fechaNacimiento, setFechaNacimiento] = useState('');
-            const handleRegistro = async () => {
-                try {
-                    const response = await axios.get(
-                        "http://10.0.2.2:4000/usuario"
-                    );
-                    console.log(response.data);
-                } catch (error) {
-                    console.error('Error fetching data:', error);
-                }
-            };
 
-
-    const showDatePicker = async () => {
+    const handleRegistro = async () => {
         try {
-            const { action, year, month, day } = await DatePickerAndroid.open({
-                date: new Date(),
-                maxDate: new Date(),
-            });
-            if (action !== DatePickerAndroid.dismissedAction) {
-                const selectedDate = new Date(year, month, day);
-                setFechaNacimiento(selectedDate.toDateString());
-            }
-        } catch ({ code, message }) {
-            console.warn('Error mostrando el selector de fecha:', message);
+            const response = await axios.post(
+                "http://10.0.2.2:4000/usuario",
+                {
+                    dui:dui,
+                    primernombre:primerNombre,
+                    primerapellido:primerApellido,
+                    usuario:usuario,
+                    contrasena:contrasena,
+                    fechanacimiento:fechaNacimiento,
+                    jvpm:"",
+                    rol:"Paciente"
+                }
+            );
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
     };
 
@@ -65,8 +60,8 @@ const RegistroFormulario = () => {
             <Text style={styles.label}>Correo:</Text>
             <TextInput
                 style={styles.input}
-                value={correo}
-                onChangeText={(text) => setCorreo(text)}
+                value={usuario}
+                onChangeText={(text) => setUsuario(text)}
                 keyboardType="email-address"
             />
 
@@ -79,7 +74,10 @@ const RegistroFormulario = () => {
             />
 
             <Text style={styles.label}>Fecha de Nacimiento:</Text>
-            <Button title="Seleccionar Fecha" onPress={showDatePicker} />
+            <TextInput style={styles.input} 
+                value={fechaNacimiento}
+                onChangeText={(text) => setFechaNacimiento(text)}
+            />
 
             <Text style={styles.label}>Fecha seleccionada: {fechaNacimiento}</Text>
 

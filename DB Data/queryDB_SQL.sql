@@ -1,3 +1,8 @@
+CREATE DATABASE AsiloAncianos
+USE AsiloAncianos
+
+SELECT * FROM Usuarios
+DELETE FROM Usuarios WHERE DUI = "04857841-3"
 
 -- Creación de la tabla Usuarios
 CREATE TABLE Usuarios (
@@ -5,11 +10,13 @@ CREATE TABLE Usuarios (
     Rol VARCHAR(20), -- Puede ser 'Director', 'Doctor' o 'Paciente'
     PrimerNombre VARCHAR(50),
     PrimerApellido VARCHAR(50),
-    FechaNacimiento DATE,
-    Usuario VARCHAR(50),
+    FechaNacimiento VARCHAR(20),
+    Usuario VARCHAR(50) UNIQUE,
     Contraseña VARCHAR(50),
     JVPM VARCHAR(20)
 );
+
+select * from Usuarios
 
 -- Creación de la tabla Citas
 CREATE TABLE Citas (
@@ -20,3 +27,4 @@ CREATE TABLE Citas (
     Detalles TEXT,
     FOREIGN KEY (PacienteID) REFERENCES Usuarios (DUI)
 );
+
