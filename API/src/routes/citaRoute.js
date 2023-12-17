@@ -1,6 +1,6 @@
 var app = require('../index')
 
-const citaCtrl = require('../controllers/usuarioController')
+const citaCtrl = require('../controllers/citaController')
 
 app.get('/citas', citaCtrl.getCitas)
 
